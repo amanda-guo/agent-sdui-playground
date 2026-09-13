@@ -1,4 +1,5 @@
-import { AssistantRuntimeProvider, Thread } from "@assistant-ui/react";
+import { AssistantRuntimeProvider } from "@assistant-ui/react";
+import { Thread } from "@/components/assistant-ui/elements/thread.aui";
 import { useMockAgentRuntime } from "./agentRuntime";
 import { AgentMessage } from "./components/AgentMessage";
 
@@ -16,7 +17,7 @@ export default function App() {
           <div className="h-[600px] border rounded-lg overflow-hidden">
             <Thread
               components={{
-                Message: AgentMessage,
+                AssistantMessage: AgentMessage,
               }}
             />
           </div>
