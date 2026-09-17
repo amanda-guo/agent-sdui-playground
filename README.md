@@ -1,4 +1,4 @@
-# Agent UI Playground
+# Agent SDUI Playground
 
 This project is a lightweight React + Vite playground for experimenting with agent-style chat UIs built with Assistant UI. It provides a mock agent runtime and a clean chat thread interface so you can prototype AI assistant experiences, message rendering, and tool interactions without needing a backend.
 
