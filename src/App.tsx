@@ -9,7 +9,7 @@ export default function App() {
   const runtime = useMockAgentRuntime();
   const [isDark, setIsDark] = useState(() => {
     if (typeof window === "undefined") return false;
-    const saved = window.localStorage.getItem("agent-ui-theme");
+    const saved = window.localStorage.getItem("agent-sdui-theme");
     if (saved) return saved === "dark";
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
@@ -17,7 +17,7 @@ export default function App() {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark);
     document.documentElement.style.colorScheme = isDark ? "dark" : "light";
-    window.localStorage.setItem("agent-ui-theme", isDark ? "dark" : "light");
+    window.localStorage.setItem("agent-sdui-theme", isDark ? "dark" : "light");
   }, [isDark]);
 
   return (
@@ -31,7 +31,7 @@ export default function App() {
         <div className="mx-auto flex w-full max-w-5xl flex-col px-4 py-6 sm:px-6 lg:px-8">
           <div className="mb-6 flex items-center justify-between gap-3">
             <h1 className="text-3xl font-bold tracking-tight text-black sm:text-4xl dark:text-slate-50">
-              Agent UI Playground
+              Agent SDUI Playground
             </h1>
 
             <button
