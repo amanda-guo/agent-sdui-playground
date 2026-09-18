@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Moon, SunMedium } from "lucide-react";
 import { AssistantRuntimeProvider } from "@assistant-ui/react";
 import { Thread } from "@/components/assistant-ui/elements/thread.aui";
-import { useMockAgentRuntime } from "./agentRuntime";
+import { useAgentRuntime } from "./agentRuntime";
 import { AgentMessage } from "./components/AgentMessage";
 
 export default function App() {
-  const runtime = useMockAgentRuntime();
+  const runtime = useAgentRuntime();
   const [isDark, setIsDark] = useState(() => {
     if (typeof window === "undefined") return false;
     const saved = window.localStorage.getItem("agent-sdui-theme");
