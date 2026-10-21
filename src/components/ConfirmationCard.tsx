@@ -10,9 +10,9 @@ interface ConfirmationCardProps {
 
 export function ConfirmationCard({ data }: ConfirmationCardProps) {
   return (
-    <Card className="w-full max-w-md">
-      <CardContent className="pt-6">
-        <p className="mb-4">{data.message}</p>
+    <Card className="w-[300px] max-w-full gap-0">
+      <CardContent className="pt-0">
+        <p className="mb-4 text-base">{data.message}</p>
         <Button variant="default">{data.confirmLabel}</Button>
       </CardContent>
     </Card>
