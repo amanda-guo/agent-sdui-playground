@@ -7,10 +7,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// Create a Groq provider using the OpenAI-compatible interface
+const apiKey = process.env.GROQ_API_KEY;
+if (!apiKey) {
+  throw new Error("GROQ_API_KEY is required. Add it to your .env file.");
+}
+
 const groq = createOpenAICompatible({
   name: "groq",
-  apiKey: process.env.GROQ_API_KEY,
+  apiKey,
   baseURL: "https://api.groq.com/openai/v1",
 });
 const model = process.env.GROQ_MODEL ?? "openai/gpt-oss-120b";
@@ -20,19 +24,23 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/api/chat", async (req, res) => {
-  console.log("Backend received request:", req.body.messages?.length, "messages");
-  const { messages }: { messages: UIMessage[] } = req.body;
+  const messages = req.body.messages as UIMessage[] | undefined;
+  if (!Array.isArray(messages)) {
+    res.status(400).json({ error: "A messages array is required." });
+    return;
+  }
 
   const result = streamText({
     model: groq(model),
     messages: await convertToModelMessages(messages),
-    system: "You are a cloud infrastructure assistant. Help users check service status and propose safe actions. Begin every response with 'LLM ACTIVE:'",
+    system:
+      "You are a cloud infrastructure assistant. Help users check service status and propose safe actions. Begin every response with 'LLM ACTIVE:'.",
   });
 
   await result.pipeUIMessageStreamToResponse(res);
 });
 
-const PORT = 3001;
-app.listen(PORT, () => {
-  console.log(`API server running on http://localhost:${PORT}`);
+const port = Number(process.env.PORT ?? 3001);
+app.listen(port, () => {
+  console.log(`API server running on http://localhost:${port}`);
 });
