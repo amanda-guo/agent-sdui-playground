@@ -17,11 +17,11 @@ export function StatusCard({ data }: StatusCardProps) {
   }[data.status];
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-[300px] max-w-full gap-0">
       <CardHeader className="pb-2">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-lg">{data.service}</CardTitle>
-          <Badge className={statusColor}>{data.status}</Badge>
+        <div className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-start gap-x-6">
+          <CardTitle className="min-w-0 break-words text-lg">{data.service}</CardTitle>
+          <Badge className={`shrink-0 ${statusColor}`}>{data.status}</Badge>
         </div>
       </CardHeader>
       <CardContent>

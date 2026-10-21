@@ -5,7 +5,7 @@ import type { AgentResponse } from "../mockAgent";
 export function AgentMessage() {
   return (
     <MessagePrimitive.Root className="flex w-full justify-start">
-      <div className="max-w-md">
+      <div className="w-full min-w-0 max-w-md">
         <MessagePrimitive.Content
           components={{
             Text: (part) => {
