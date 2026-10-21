@@ -6,9 +6,9 @@ interface TextCardProps {
 
 export function TextCard({ data }: TextCardProps) {
   return (
-    <Card className="w-full max-w-md">
-      <CardContent className="pt-6">
-        <p className="text-muted-foreground">{data.content}</p>
+    <Card className="w-[300px] max-w-full gap-0">
+      <CardContent className="pt-0">
+        <p className="text-base text-muted-foreground">{data.content}</p>
       </CardContent>
     </Card>
   );
