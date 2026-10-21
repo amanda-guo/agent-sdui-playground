@@ -21,9 +21,9 @@ This project is a lightweight React + Vite playground for experimenting with age
    GROQ_API_KEY=your-groq-api-key
    ```
    Optionally set `GROQ_MODEL` to choose a different Groq model. The default is `openai/gpt-oss-120b`.
-3. Start both the frontend and API server:
+3. Start the frontend and API server:
    ```bash
-   npm run dev:full
+   npm run dev
    ```
 4. Open the local URL shown in the terminal (typically http://localhost:5173)
 
